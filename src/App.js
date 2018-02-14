@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import StudentForm from './components/StudentForm/StudentForm';
 import StudentList from './components/StudentList/StudentList';
+import GithubInfoPanel from './components/GithubInfoPanel/GithubInfoPanel';
 
 class App extends Component {
   constructor() {
@@ -10,10 +11,12 @@ class App extends Component {
     // Keep track of the student list
     this.state = {
       studentList: [],
+      currentStudent: {}
     };
 
     // Give our function access to `this`
     this.addStudent = this.addStudent.bind(this);
+    this.getGithubData = this.getGithubData.bind(this);
 
     this.getStudents();
   }
@@ -46,16 +49,36 @@ class App extends Component {
       });
   }
 
+  getGithubData(student) {
+    console.log('go get github data', student);   
+    
+    const url = `https://api.github.com/users/${student.github}`;
+    axios.get(url)
+      .then((response) => {
+        console.log(response.data);        
+        this.setState({ currentStudent: response.data });
+      })
+      .catch((error) => {
+        this.setState({ currentStudent: {} });
+        console.log('error get students: ', error);
+      });    
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">GitHub Student List</h1>
         </header>
-        <br/>
-        <StudentForm addStudent={this.addStudent}/>
+        <StudentForm addStudent={this.addStudent} />
+        <div className="container">
+          <h2 className="column">Saved Github Users</h2>
+        </div>
+        <div className="container">
+          <StudentList getGithubData={this.getGithubData} studentList={this.state.studentList} />
 
-        <StudentList studentList={this.state.studentList}/>
+          <GithubInfoPanel student={this.state.currentStudent}/>        
+        </div>
       </div>
     );
   }

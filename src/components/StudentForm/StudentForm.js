@@ -37,10 +37,12 @@ class StudentForm extends Component {
 
     render() {
         return (
+            <div className="container">
             <form onSubmit={this.handleSubmit}>
                 <input onChange={this.handleChange} placeholder="GitHub username" value={this.state.github} name="github" />
                 <input type="submit" value="Submit" />
             </form>
+            </div>
         );
     }
 }
