@@ -17,9 +17,10 @@ class App extends Component {
     // Give our function access to `this`
     this.addStudent = this.addStudent.bind(this);
     this.getGithubData = this.getGithubData.bind(this);
+    this.deleteStudent = this.deleteStudent.bind(this);
 
     this.getStudents();
-  }
+  } // end constructor
 
   // This function is called by the StudentForm when the submit button is pressed
   addStudent(newStudent) {
@@ -36,7 +37,7 @@ class App extends Component {
   }
 
   getStudents() {
-    console.log('here');
+    console.log('getting students from server');
     
     axios.get('/students')
       .then((response) => {
@@ -47,6 +48,17 @@ class App extends Component {
       .catch((error) => {
         console.log('error get students: ', error);
       });
+  }
+
+  deleteStudent(id) {
+    console.log('to delete: ', id); 
+    axios.delete(`/students/${id}`)
+      .then((response) => {
+        this.getStudents();
+      })
+      .catch((error) => {
+        console.log('error delete student: ', error);
+      });   
   }
 
   getGithubData(student) {
@@ -75,13 +87,13 @@ class App extends Component {
           <h2 className="column">Saved Github Users</h2>
         </div>
         <div className="container">
-          <StudentList getGithubData={this.getGithubData} studentList={this.state.studentList} />
+          <StudentList getGithubData={this.getGithubData} deleteStudent={this.deleteStudent} studentList={this.state.studentList} />
 
           <GithubInfoPanel student={this.state.currentStudent}/>        
         </div>
       </div>
     );
-  }
-}
+  } // end render
+} // end App class
 
 export default App;

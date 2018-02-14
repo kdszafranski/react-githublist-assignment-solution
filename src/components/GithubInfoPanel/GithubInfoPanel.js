@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './GithubInfoPanel.css';
 
 class GithubPanel extends Component {
-    constructor() {
-        super();
-    }
 
     render() {
         if (this.props.student.hasOwnProperty('bio')) {
@@ -20,7 +17,8 @@ class GithubPanel extends Component {
         } else {
             return <div className="column"></div>
         }
-    }
-}
+    } // end render
+
+} // end class
 
 export default GithubPanel;

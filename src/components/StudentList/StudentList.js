@@ -11,10 +11,10 @@ class StudentList extends Component {
     
     render() {
         let listItems = this.props.studentList.map((student, i) => {
-            console.log(i);
-            console.log(this.props);
             
-            return <StudentRow key={student._id} studentInfo={student} row={i} getData={this.props.getGithubData}/>
+            console.log('processing listItems: ', i);
+            
+            return <StudentRow key={student._id} studentInfo={student} row={i} getData={this.props.getGithubData} deleteStudent={this.props.deleteStudent}/>
         });
 
         return (
@@ -22,7 +22,7 @@ class StudentList extends Component {
                 <table className="StudentList-table">
                     <thead>
                         <tr>
-                            <th>Username</th>
+                            <th colSpan="2">Username</th>
                         </tr>
                     </thead>
                     <tbody>
