@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './StudentList.css';
+import StudentRow from '../StudentRow/StudentRow';
 
 class StudentList extends Component {
     constructor() {
@@ -10,18 +11,7 @@ class StudentList extends Component {
     render() {
         let listItems = this.props.studentList.map((student, i) => {
             console.log(i);
-            let el;
-            if(i % 2 == 1) {
-                // alt rows
-                el = <tr key={student._id} className="StudentList-altrow"><td>{student.github}</td></tr>; 
-            } else {
-                el = <tr key={student._id}><td>{student.github}</td></tr>;
-            }
-
-            console.log(el);
-            
-
-            return el;
+            return <StudentRow key={student._id} studentInfo={student} row={i} />            
         });
 
         return (
