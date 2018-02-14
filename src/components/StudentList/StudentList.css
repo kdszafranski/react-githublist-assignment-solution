@@ -1,0 +1,27 @@
+.StudentList-table {
+    width: 80%;
+    text-align: left;
+    border: 1px solid gray;
+    margin: 20px auto;
+    background-color: white;
+}
+
+.StudentList-table, .StudentList-table tr, .StudentList-table td, .StudentList-table th {
+    border: 1px solid gray;
+}
+
+.StudentList-table tr, .StudentList-table td, .StudentList-table th {
+    margin: 0;
+}
+
+.StudentList-table th {
+    background-color: salmon;
+}
+
+.StudentList-table td, .StudentList-table th {
+    padding: 5px;
+}
+
+.StudentList-altrow {
+    background-color: #ddd;
+}
