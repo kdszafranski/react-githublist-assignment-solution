@@ -41,7 +41,6 @@ class App extends Component {
     
     axios.get('/students')
       .then((response) => {
-        console.log(response.data);
         // just give it the object you want to store
         this.setState({ studentList: response.data });
       })

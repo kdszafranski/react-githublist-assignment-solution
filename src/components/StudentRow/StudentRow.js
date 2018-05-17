@@ -10,7 +10,6 @@ class StudentRow extends Component {
 
     handleDetails(event) {
         event.preventDefault();
-        console.log('clicked', this.props);
         this.props.getData(this.props.studentInfo);    
     }
 
