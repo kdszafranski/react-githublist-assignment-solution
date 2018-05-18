@@ -14,7 +14,7 @@ class StudentList extends Component {
                         key={student._id} 
                         studentInfo={student} 
                         row={i} 
-                        getData={this.props.getGithubData} 
+                        getGithubData={this.props.getGithubData} 
                         deleteStudent={this.props.deleteStudent}
                     />)
         });

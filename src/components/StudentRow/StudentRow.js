@@ -10,7 +10,7 @@ class StudentRow extends Component {
 
     handleDetails(event) {
         event.preventDefault();
-        this.props.getData(this.props.studentInfo);    
+        this.props.getGithubData(this.props.studentInfo);    
     }
 
     handleDelete(event) {
